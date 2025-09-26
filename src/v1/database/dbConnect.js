@@ -1,7 +1,7 @@
 import { MongoClient, ObjectId, ServerApiVersion } from "mongodb";
 
 export const dbConnect = async (process, insertData) => {
-  const client = await MongoClient.connect("mongodb+srv://designdrumm:A420EFvKngeFUO80@cluster0.4en25oj.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0", {
+  const client = await MongoClient.connect("<MongoDB cluster url>", {
     serverApi: {
       version: ServerApiVersion.v1,
       strict: true,
