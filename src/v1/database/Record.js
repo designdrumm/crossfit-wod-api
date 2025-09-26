@@ -45,16 +45,17 @@ const getAllRecords = (workoutId, filterParams) => {
       //   record.workout === workoutId ? filter_records.push(record) : false
       // );
       var filter_records = rDB[0].records.filter((record) => {
-        if(record.workout === workoutId) {
+        if (record.workout === workoutId) {
           return record;
         }
-      })
+      });
       // console.log("filter records:");
       // console.log(filter_records);
       return filter_records;
-    } else if (filterParams.record.length) {
-      return rDB[0].records.filter((a_record) =>
-        a_record.record.toLowerCase().includes(filterParams.record)
+    } else if (filterParams.record) {
+      return rDB[0].records.filter(
+        (a_record) =>
+          a_record.record.toLowerCase() === filterParams.record.toLowerCase()
       );
     }
     return records;

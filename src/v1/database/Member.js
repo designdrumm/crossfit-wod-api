@@ -42,8 +42,9 @@ const getAllMembers = (filterParams) => {
   try {
     let members = mDB[0].members;
     if (filterParams.gender) {
-      return mDB[0].members.filter((member) =>
-        member.gender.toLowerCase().includes(filterParams.gender)
+      return mDB[0].members.filter(
+        (member) =>
+          member.gender.toLowerCase() === filterParams.gender.toLowerCase()
       );
     }
     return members;

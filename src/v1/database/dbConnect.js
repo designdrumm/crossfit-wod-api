@@ -1,7 +1,7 @@
 import { MongoClient, ObjectId, ServerApiVersion } from "mongodb";
 
 export const dbConnect = async (process, insertData) => {
-  const client = await MongoClient.connect("<MongoDB cluster url>", {
+  const client = await MongoClient.connect("<>mongoDB secret url", {
     serverApi: {
       version: ServerApiVersion.v1,
       strict: true,

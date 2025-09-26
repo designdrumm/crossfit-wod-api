@@ -44,14 +44,14 @@ let wDB = {};
 
 wDB = await dbConnect("find", "all");
 
-// console.log(wDB[0].workouts);
-
 const getAllWorkouts = (filterParams) => {
   try {
     let workouts = wDB[0].workouts;
+
     if (filterParams.mode) {
-      return wDB[0].workouts.filter((workout) =>
-        workout.mode.toLowerCase().includes(filterParams.mode)
+      return wDB[0].workouts.filter(
+        (workout) =>
+          workout.mode.toLowerCase() === filterParams.mode.toLowerCase()
       );
     }
     return workouts;
@@ -77,7 +77,8 @@ const getOneWorkout = (workoutId) => {
 
 const createNewWorkout = (newWorkout) => {
   const isAlreadyAdded =
-    wDB[0].workouts.findIndex((workout) => workout.name === newWorkout.name) > -1;
+    wDB[0].workouts.findIndex((workout) => workout.name === newWorkout.name) >
+    -1;
   if (isAlreadyAdded) {
     throw {
       status: 400,
@@ -96,7 +97,8 @@ const createNewWorkout = (newWorkout) => {
 const updateOneWorkout = (workoutId, changes) => {
   try {
     const isAlreadyAdded =
-      wDB[0].workouts.findIndex((workout) => workout.name === changes.name) > -1;
+      wDB[0].workouts.findIndex((workout) => workout.name === changes.name) >
+      -1;
     if (isAlreadyAdded) {
       throw {
         status: 400,
